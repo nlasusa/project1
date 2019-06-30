@@ -14,7 +14,6 @@ var recipeNutritionals;
 
 //First create an onclick listener to listen which button value is selected on first page
 
-
 //This will assign the value of that button to a variable
 
 
