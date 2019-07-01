@@ -23,26 +23,39 @@ $("#button-1").on("click", function(){
 
     console.log("The calories you've chosen to search are: " + calories);
 
-    unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate?targetCalories=2000&timeFrame=day")
-    .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
-    .header("X-RapidAPI-Key", "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16")
-    .end(function (result) {
-      console.log(result);
+    // unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate?targetCalories=2000&timeFrame=day")
+    // .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
+    // .header("X-RapidAPI-Key", "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16")
+    // .end(function (result) {
+    //   console.log(result);
+    // });
+
+    // $.ajax({
+    //   method: 'GET',
+    //   url: 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "X-RapidAPI-Key": "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16"
+    //   }
+    // })
+
+    // var question = "How much vitamin c is in 2 apples";
+    $.ajax({
+      url:
+        "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate?targetCalories=" + calories + "&timeFrame=day",
+      type: "GET",
+      headers: {
+        "X-RapidAPI-Key":
+          "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16",
+        "X-RapidAPI-Host":
+          "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+      }
+    }).then(function(response) {
+      console.log(response);
     });
 
 
-    // $.ajax({
-        
-    //     url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate",
-    //     method: 'GET',
-
-    // }).then( function(response){
-    //     console.log(response);
-    // })
-    
-
-})
-
+   });
 
 //This will assign the value of that button to a variable
 
