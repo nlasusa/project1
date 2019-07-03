@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- // meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nutri-Prep</title>
-    
+
     <!-- // bootstrap CSS  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans|Caveat+Brush|Rammetto+One|Viga|Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans|Caveat+Brush|Rammetto+One|Viga|Caveat&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/style/style.css">
 
     <!-- jQuery -->
@@ -25,45 +27,49 @@
 
     <div class="container">
 
-    <p>Select your target category:</p>
+        <p>Select your target category:</p>
 
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                 <h4 class="card-title">Weight Loss</h4>
-            <div class="card-body">
-                <button id="button-1" class="btn btn-light" value="1750"><span>Conservative</span></button>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <h4 class="card-title">Weight Loss</h4>
+                    <div class="card-body">
+                        <button id="button-1" class="btn btn-light" value="1750"><span>Conservative</span></button>
+                    </div>
+                </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <h4 class="card-title">Healthy General</h4>
+                    <div class="card-body">
+                        <button id="button-2" class="btn btn-light" value="2000"><span>Maintain</span></button>
+                    </div>
+                </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <h4 class="card-title">Weight Gain</h4>
+                    <div class="card-body">
+                        <button id="button-3" class="btn btn-light" value="2500"><span>Conservative</span></button>
+                        <button id="button-4" class="btn btn-light" value="2750"><span>Moderate</span></button>
+                        <button id="button-5" class="btn btn-light" value="3000"><span>Aggressive</span></button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <h4 class="card-title">Healthy General</h4>
-            <div class="card-body">
-                <button id="button-2" class="btn btn-light" value="2000"><span>Maintain</span></button>
-            </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card">
-                <h4 class="card-title">Weight Gain</h4>
-            <div class="card-body"> 
-                <button id="button-3" class="btn btn-light" value="2500"><span>Conservative</span></button>
-                <button id="button-4" class="btn btn-light" value="2750"><span>Moderate</span></button>
-                <button id="button-5" class="btn btn-light" value="3000"><span>Aggressive</span></button>
-            </div>
-            </div>
-    </div>
+        <div id="recipe-container"></div>
 
     </div>
-
-<!--         Local Script           -->
-<script src="assets/javascript/app.js"></script>
+    <!--         Local Script           -->
+    <script src="assets/javascript/app.js"></script>
 
 
 
 
 </body>
+
 </html>
