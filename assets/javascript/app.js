@@ -87,7 +87,7 @@ $("#button-1").on("click", function(){
       }
     }).then(function(resp1){
 
-      // console.log(resp1);
+      console.log(resp1);
       $("#recipe-container").html(resp1);
     
     })
