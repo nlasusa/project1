@@ -8,6 +8,10 @@ var recipeImage;
 var recipeIngredients;
 var recipeNutritionals;
 
+var recipeOne;
+var recipeTwo;
+var recipeThree;
+
 var apiKey = "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16";
 
 //\\//\\//\\ CREATE FUNCTIONS \\//\\//\\//
@@ -52,10 +56,42 @@ $("#button-1").on("click", function(){
       }
     }).then(function(response) {
       console.log(response);
+
+      var meal = response.meals
+      recipeOne = meal[0].id;
+      recipeTwo = meal[1].id;
+      recipeThree = meal[2].id;
+
+      console.log(recipeOne);
+
+      postRecipeFunction1();
     });
 
 
    });
+
+  function postRecipeFunction1(){
+
+    console.log(recipeOne);
+    console.log(recipeTwo);
+    console.log(recipeThree);
+
+    $.ajax({
+      url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeOne + "/ingredientWidget",
+      type: "GET",
+      headers: {
+        "X-RapidAPI-Key":
+          "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16",
+        "X-RapidAPI-Host":
+          "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+      }
+    }).then(function(resp1){
+
+      console.log(resp1);
+      $("#recipe-container").html(resp1);
+    
+    })
+  }
 
 //This will assign the value of that button to a variable
 
