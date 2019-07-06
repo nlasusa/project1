@@ -17,7 +17,7 @@ var apiKey = "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16";
 //\\//\\//\\ CREATE FUNCTIONS \\//\\//\\//
 
 //First create an onclick listener to listen which button value is selected on first page
-
+$("#recipe-container").hide();
 $("#button-1").on("click", function(){
 
     console.log("You clicked a button");
@@ -68,7 +68,7 @@ $("#button-1").on("click", function(){
     });
 
 
-   });
+   });  //closing click
 
   function postRecipeFunction1(){
 
@@ -86,10 +86,9 @@ $("#button-1").on("click", function(){
           "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
       }
     }).then(function(resp1){
-
+      $("#recipe-container").show();
       console.log(resp1);
       $("#recipe-container").html(resp1);
-    
     })
   }
 

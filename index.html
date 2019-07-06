@@ -23,9 +23,23 @@
 <body>
 
     <h1>Nutri-Prep</h1>
-    <h2>Recipes With Your Health & Goals In Mind</h2><br><br><br>
+    <h2>Recipes With Your Health & Goals In Mind</h2><br>
 
     <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+            <form id="dietaryinfo">
+                <input type="checkbox" id="Vegetarian"> Vegetarian<br>
+                <input type="checkbox" id="Gluten-Free"> Gluten-Free<br>
+                <input type="checkbox" id="Keto"> Keto<br>
+                <input type="checkbox" id="Dairy-Free"> Dairy-Free<br>
+                <input type="checkbox" id="Kosher"> Kosher<br><br>
+                <input type="submit" id="Submit"> <value="Submit">
+            </form>
+            </div>
+        </div><br>
+    
 
         <p>Select your target category:</p>
 
@@ -61,8 +75,15 @@
 
         </div>
 
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" id="recipe-container"></div>
+            </div>
+        </div>
 
-        <div class="card" id="recipe-container"></div>
+    
+        
 
     </div>
     <!--         Local Script           -->

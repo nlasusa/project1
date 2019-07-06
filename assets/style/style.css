@@ -55,4 +55,9 @@ p {
     border: none;
 }
 
+#dietaryinfo {
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+}
 
