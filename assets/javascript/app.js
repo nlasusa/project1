@@ -42,8 +42,11 @@ $("#button-1").on("click", function(){
 
       var meal = response.meals
       recipeOne = meal[0].id;
+      recipeOneName = meal[0].title;
       recipeTwo = meal[1].id;
+      recipeTwoName = meal[1].title;
       recipeThree = meal[2].id;
+      recipeThreeName = meal[2].title;
 
       console.log(recipeOne);
 
@@ -57,9 +60,11 @@ $("#button-1").on("click", function(){
 
    function postRecipeFunction1(){
 
-    console.log(recipeOne);
-    console.log(recipeTwo);
-    console.log(recipeThree);
+
+    var titleDiv1 = $("<div>");
+    $(titleDiv1).text(recipeOneName);
+    console.log(titleDiv1);
+    $("#recipe-container").append(titleDiv1);
 
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeOne+ "/ingredientWidget.json",
@@ -73,7 +78,7 @@ $("#button-1").on("click", function(){
     }).then(function(resp1){
 
       console.log(resp1);
-      $("#recipe-container").show();
+      $("#recipe-container1").show();
       // $("#recipe-container").html(resp1);
       
       console.log(resp1.ingredients)
@@ -93,7 +98,7 @@ $("#button-1").on("click", function(){
 
         $(newDiv).addClass("col-4");
 
-        $("#recipe-container").append(newDiv);
+        $("#recipe-container1").append(newDiv);
 
         
       }
@@ -105,9 +110,6 @@ $("#button-1").on("click", function(){
 
   function postRecipeFunction2(){
 
-    console.log(recipeOne);
-    console.log(recipeTwo);
-    console.log(recipeThree);
 
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeTwo+ "/ingredientWidget.json",
@@ -121,7 +123,7 @@ $("#button-1").on("click", function(){
     }).then(function(resp2){
 
       console.log(resp2);
-      $("#recipe-container").show();
+      $("#recipe-container2").show();
       // $("#recipe-container").html(resp1);
       
       console.log(resp2.ingredients)
@@ -141,7 +143,7 @@ $("#button-1").on("click", function(){
 
         $(newDiv).addClass("col-4");
 
-        $("#recipe-container").append(newDiv);
+        $("#recipe-container2").append(newDiv);
 
         
       }
@@ -166,7 +168,7 @@ $("#button-1").on("click", function(){
     }).then(function(resp3){
 
       console.log(resp3);
-      $("#recipe-container").show();
+      $("#recipe-container3").show();
       // $("#recipe-container").html(resp1);
       
       console.log(resp3.ingredients)
@@ -186,7 +188,7 @@ $("#button-1").on("click", function(){
 
         $(newDiv).addClass("col-4");
 
-        $("#recipe-container").append(newDiv);
+        $("#recipe-container3").append(newDiv);
 
         
       }
