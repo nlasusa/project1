@@ -17,7 +17,10 @@ var apiKey = "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16";
 //\\//\\//\\ CREATE FUNCTIONS \\//\\//\\//
 
 //First create an onclick listener to listen which button value is selected on first page
-$("#recipe-container").hide();
+$("#recipe-container1").hide();
+$("#recipe-container2").hide();
+$("#recipe-container3").hide();
+
 $(".calorie-button").on("click", function(){
 
     console.log("You clicked a button");
