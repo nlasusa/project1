@@ -60,7 +60,15 @@ p {
     font-family: 'PT Sans', sans-serif;
     font-size: 15px;
 }
-/* 
-#recipe-container {
-    height: 500px
-} */
+
+#recipe-container1 {
+    height: 100%;
+}
+
+#recipe-container2 {
+    height: 100%;
+}
+
+#recipe-container3 {
+    height: 100%;
+}

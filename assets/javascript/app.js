@@ -61,10 +61,10 @@ $("#button-1").on("click", function(){
    function postRecipeFunction1(){
 
 
-    var titleDiv1 = $("<div>");
+    var titleDiv1 = $("<h4>");
     $(titleDiv1).text(recipeOneName);
     console.log(titleDiv1);
-    $("#recipe-container").append(titleDiv1);
+    $("#recipe-container1").append(titleDiv1);
 
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeOne+ "/ingredientWidget.json",
@@ -96,7 +96,7 @@ $("#button-1").on("click", function(){
 
         $(newDiv).html("<hr>" + value + " " +  unit + " " + name);
 
-        $(newDiv).addClass("col-4");
+        // $(newDiv).addClass("col-4");
 
         $("#recipe-container1").append(newDiv);
 
@@ -110,6 +110,10 @@ $("#button-1").on("click", function(){
 
   function postRecipeFunction2(){
 
+    var titleDiv2 = $("<h4>");
+    $(titleDiv2).text(recipeTwoName);
+    console.log(titleDiv2);
+    $("#recipe-container2").append(titleDiv2);
 
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeTwo+ "/ingredientWidget.json",
@@ -141,7 +145,7 @@ $("#button-1").on("click", function(){
 
         $(newDiv).html("<hr>" + value + " " +  unit + " " + name);
 
-        $(newDiv).addClass("col-4");
+        // $(newDiv).addClass("col-4");
 
         $("#recipe-container2").append(newDiv);
 
@@ -154,6 +158,12 @@ $("#button-1").on("click", function(){
 
 
   function postRecipeFunction3(){
+
+    
+    var titleDiv3 = $("<h4>");
+    $(titleDiv3).text(recipeThreeName);
+    console.log(titleDiv3);
+    $("#recipe-container3").append(titleDiv3);
 
 
     $.ajax({
@@ -186,7 +196,7 @@ $("#button-1").on("click", function(){
 
         $(newDiv).html("<hr>" + value + " " +  unit + " " + name);
 
-        $(newDiv).addClass("col-4");
+        // $(newDiv).addClass("col-4");
 
         $("#recipe-container3").append(newDiv);
 
