@@ -18,7 +18,7 @@ var apiKey = "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16";
 
 //First create an onclick listener to listen which button value is selected on first page
 $("#recipe-container").hide();
-$("#button-1").on("click", function(){
+$(".calorie-button").on("click", function(){
 
     console.log("You clicked a button");
     console.log($('#button-1').val());
@@ -43,10 +43,17 @@ $("#button-1").on("click", function(){
       var meal = response.meals
       recipeOne = meal[0].id;
       recipeOneName = meal[0].title;
+      recipeOneImage = "https://webknox.com/recipeImages/" + meal[0].image;
+
+      console.log(recipeOneImage);
+
       recipeTwo = meal[1].id;
       recipeTwoName = meal[1].title;
+      recipeTwoImage = "https://webknox.com/recipeImages/" + meal[1].image;
+
       recipeThree = meal[2].id;
       recipeThreeName = meal[2].title;
+      recipeThreeImage = "https://webknox.com/recipeImages/" + meal[2].image;
 
       console.log(recipeOne);
 
@@ -65,6 +72,11 @@ $("#button-1").on("click", function(){
     $(titleDiv1).text(recipeOneName);
     console.log(titleDiv1);
     $("#recipe-container1").append(titleDiv1);
+
+    var imageDiv1 = $("<img>")
+    $(imageDiv1).attr("src", recipeOneImage);
+    $("#recipe-container1").append(imageDiv1);
+
 
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeOne+ "/ingredientWidget.json",
@@ -115,6 +127,12 @@ $("#button-1").on("click", function(){
     console.log(titleDiv2);
     $("#recipe-container2").append(titleDiv2);
 
+
+    
+    var imageDiv2 = $("<img>")
+    $(imageDiv2).attr("src", recipeTwoImage);
+    $("#recipe-container2").append(imageDiv2)
+
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeTwo+ "/ingredientWidget.json",
       type: "GET",
@@ -164,6 +182,11 @@ $("#button-1").on("click", function(){
     $(titleDiv3).text(recipeThreeName);
     console.log(titleDiv3);
     $("#recipe-container3").append(titleDiv3);
+
+    
+    var imageDiv3 = $("<img>")
+    $(imageDiv3).attr("src", recipeThreeImage);
+    $("#recipe-container3").append(imageDiv3)
 
 
     $.ajax({

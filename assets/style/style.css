@@ -72,3 +72,8 @@ p {
 #recipe-container3 {
     height: 100%;
 }
+
+img {
+    height: 200px;
+    width: 250px;
+}
