@@ -70,14 +70,14 @@ $("#button-1").on("click", function(){
 
    });  //closing click
 
-  function postRecipeFunction1(){
+   function postRecipeFunction1(){
 
     console.log(recipeOne);
     console.log(recipeTwo);
     console.log(recipeThree);
 
     $.ajax({
-      url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeOne + "/ingredientWidget",
+      url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeOne+ "/ingredientWidget.json",
       type: "GET",
       headers: {
         "X-RapidAPI-Key":
@@ -86,12 +86,32 @@ $("#button-1").on("click", function(){
           "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
       }
     }).then(function(resp1){
-      $("#recipe-container").show();
+
       console.log(resp1);
-      $("#recipe-container").html(resp1);
+      $("#recipe-container").show();
+      // $("#recipe-container").html(resp1);
+      
+      console.log(resp1.ingredients)
+      var ingredients = resp1.ingredients;
+
+      for (i = 0; i < ingredients.length; i++) {
+        // $("#recipe-container").text(ingredients[i].name);
+        console.log(i);
+        var newDiv = $("<div>");
+        $(newDiv).text(ingredients[i].name);
+        $(newDiv).addClass("col-3");
+        console.log(ingredients[i].name);
+        // $(newDiv).text(ingredients[i].amount.metric.value);
+        // $(newDiv).text(ingredients[i].amount.metric.unit);
+
+        $("#recipe-container").append(newDiv);
+
+        
+      }
+      
+
     })
   }
-
 //This will assign the value of that button to a variable
 
 
