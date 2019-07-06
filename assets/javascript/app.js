@@ -98,8 +98,20 @@ $("#button-1").on("click", function(){
         // $("#recipe-container").text(ingredients[i].name);
         console.log(i);
         var newDiv = $("<div>");
-        $(newDiv).text(ingredients[i].name);
-        $(newDiv).addClass("col-3");
+        // $(newDiv).text(ingredients[i].name);
+
+        var name = ingredients[i].name;
+        var value = ingredients[i].amount.metric.value;
+        var unit = ingredients[i].amount.metric.unit;
+
+        $(newDiv).html("<hr>" + value + " " +  unit + " " + name);
+
+
+
+
+        // $(newDiv).text(ingredients[i].metric);
+        $(newDiv).addClass("col-4");
+
         console.log(ingredients[i].name);
         // $(newDiv).text(ingredients[i].amount.metric.value);
         // $(newDiv).text(ingredients[i].amount.metric.unit);
