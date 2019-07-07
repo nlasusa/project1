@@ -21,6 +21,16 @@ p {
     font-family: 'PT Sans', sans-serif;
     font-size: 15px;
 }
+
+#rate { 
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 12px;
+    text-align: center; 
+    color: #47E967;
+    margin-top: 5px;
+}
+
 .card {
     text-align:center;
     border-color: black;
@@ -54,7 +64,7 @@ p {
 #recipe-container1 {
     height: 100%;
     font-family: 'Viga', sans-serif;
-    border: 1px solid yellow;
+    border: 1px solid yellow; 
 }
 #recipe-container2 {
     height: 100%;
@@ -70,4 +80,9 @@ p {
 img {
     height: 200px;
     width: 250px;
+    align-self: center;
+}
+
+#rateYo {
+    margin: 0 auto; 
 }
