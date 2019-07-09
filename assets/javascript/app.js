@@ -12,6 +12,8 @@ var recipeOne;
 var recipeTwo;
 var recipeThree;
 
+var carlories;
+
 // var nutritionGot1 = false;
 
 var apiKey = "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16";
@@ -43,13 +45,17 @@ $("#recipe-container3").hide();
 
 $(".calorie-button").on("click", function () {
 
-  var calories = $('.calorie-button').val();
+  chosenCalories = $(this).val();
+  console.log(chosenCalories);
 
-  console.log("The calories you've chosen to search are: " + calories);
+//   calories = $('.calorie-button').val();
+// console.log(calories )
+
+  console.log("The calories you've chosen to search are: " + chosenCalories);
 
   $.ajax({
     url:
-      "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate?targetCalories=" + calories + "&timeFrame=day",
+      "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate?targetCalories=" + chosenCalories + "&timeFrame=day",
     type: "GET",
     headers: {
       "X-RapidAPI-Key":
