@@ -18,6 +18,24 @@ var apiKey = "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16";
 
 //\\//\\//\\ CREATE FUNCTIONS \\//\\//\\//
 
+//rateYo Functions yo! //
+// function for user stars rating 
+$("#rateYo").rateYo({ 
+  spacing: "10px", 
+  starWidth: "25px",
+  numStars: 5, 
+  minValue: 0, 
+  maxValue: 5, 
+  normalFill: 'black', 
+  ratedFill: 'yellow', 
+
+})
+
+$("#rateYo").on("click", function () {
+  swal("Thanks for your review! We appreciate your feedback.");
+})
+
+
 //First create an onclick listener to listen which button value is selected on first page
 $("#recipe-container1").hide();
 $("#recipe-container2").hide();
