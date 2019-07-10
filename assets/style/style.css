@@ -62,17 +62,17 @@ p {
 #recipe-container1 {
     height: 100%;
     font-family: 'Viga', sans-serif;
-    border: 1px solid yellow; 
+    border: 1px solid black;
 }
 #recipe-container2 {
     height: 100%;
     font-family: 'Viga', sans-serif;
-    border: 1px solid yellow;
+    border: 1px solid black;
 }
 #recipe-container3 {
     height: 100%;
     font-family: 'Viga', sans-serif;
-    border: 1px solid yellow;
+    border: 1px solid black;
 }
 img {
     height: 200px;
@@ -82,3 +82,4 @@ img {
 #rateYo {
     margin: 0 auto; 
 }
+
