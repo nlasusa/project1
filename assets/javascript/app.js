@@ -37,7 +37,6 @@ $("#rateYo").on("click", function () {
   swal("Thanks for your review! We appreciate your feedback.");
 })
 
-
 //First create an onclick listener to listen which button value is selected on first page
 $("#recipe-container1").hide();
 $("#recipe-container2").hide();
@@ -94,15 +93,15 @@ $(".calorie-button").on("click", function () {
 function postRecipeFunction1() {
 
 
+   var imageDiv1 = $("<img>")
+  $(imageDiv1).attr("src", recipeOneImage);
+  $("#recipe-container1").prepend(imageDiv1);
+
   var titleDiv1 = $("<h4>");
   $(titleDiv1).text(recipeOneName);
   // console.log(titleDiv1);
-  $("#recipe-container1").append(titleDiv1);
+  $("#recipe-container1").prepend(titleDiv1);
 
-
-  var imageDiv1 = $("<img>")
-  $(imageDiv1).attr("src", recipeOneImage);
-  $("#recipe-container1").append(imageDiv1);
 
   // var ingredientsDiv1 = $("<h6>");
   // $(ingredientsDiv1).text("Ingredients");
@@ -139,9 +138,10 @@ function postRecipeFunction1() {
       $(newDiv).html("<hr>" + value + " " + unit + " " + name);
 
       // $(newDiv).addClass("col-4");
-
-      $("#recipe-container1").append(newDiv);
-
+      
+      $("#button-ingr1").on("click", function () {
+        $("#button-ingr1").append(newDiv);
+      })
       
     }
 
@@ -172,8 +172,9 @@ function postRecipeFunction1() {
       $(nutrition1).append("Fat: " + resp1b.fat + "<br>");
       $(nutrition1).append("Protein: " + resp1b.protein + "<br>");
       console.log(nutrition1);
-      $("#recipe-container1").append(nutrition1);
-
+      $("#button-nutr1").on("click", function () {
+        $("#button-nutr1").append(nutrition1);
+      })
       // nutritionGot1 = true;
     })
 
@@ -204,7 +205,10 @@ function postRecipeFunction1() {
         instructionsDiv1 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
         
         $(instructionsDiv1).append("<br>" + "<br>" + "Step Number" + [i+1] + ": " + recipeSteps[i].step);
-        $("#recipe-container1").append(instructionsDiv1);
+
+        $("#button-instr1").on("click", function () {
+        $("#button-instr1").append(instructionsDiv1);
+        })
 
       }
 
@@ -219,16 +223,15 @@ function postRecipeFunction1() {
 
 function postRecipeFunction2() {
 
+  var imageDiv2 = $("<img>")
+  $(imageDiv2).attr("src", recipeTwoImage);
+  $("#recipe-container2").prepend(imageDiv2)
+
   var titleDiv2 = $("<h4>");
   $(titleDiv2).text(recipeTwoName);
   // console.log(titleDiv2);
-  $("#recipe-container2").append(titleDiv2);
+  $("#recipe-container2").prepend(titleDiv2);
 
-
-
-  var imageDiv2 = $("<img>")
-  $(imageDiv2).attr("src", recipeTwoImage);
-  $("#recipe-container2").append(imageDiv2)
 
   // var ingredientsDiv2 = $("<h6>");
   // $(ingredientsDiv2).text("Ingredients");
@@ -266,7 +269,10 @@ function postRecipeFunction2() {
 
       // $(newDiv).addClass("col-4");
 
-      $("#recipe-container2").append(newDiv);
+
+      $("#button-ingr2").on("click", function () {
+      $("#button-ingr2").append(newDiv);
+    })
 
 
     }
@@ -296,7 +302,10 @@ function postRecipeFunction2() {
       $(nutrition2).append("Fat: " + resp2b.fat + "<br>");
       $(nutrition2).append("Protein: " + resp2b.protein + "<br>");
       console.log(nutrition2);
-      $("#recipe-container2").append(nutrition2);
+
+      $("#button-nutr2").on("click", function () {
+        $("#button-nutr2").append(nutrition2);
+    })
 
       // nutritionGot1 = true;
     })
@@ -328,7 +337,11 @@ function postRecipeFunction2() {
         instructionsDiv2 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
         
         $(instructionsDiv2).append("<br>" + "<br>" + "Step Number" + [i+1] + ": " + recipeSteps[i].step);
-        $("#recipe-container2").append(instructionsDiv2);
+
+
+        $("#button-instr2").on("click", function () {
+          $("#button-instr2").append(instructionsDiv2);
+          })
 
       }
 
@@ -345,16 +358,14 @@ function postRecipeFunction2() {
 
 function postRecipeFunction3() {
 
+  var imageDiv3 = $("<img>")
+  $(imageDiv3).attr("src", recipeThreeImage);
+  $("#recipe-container3").prepend(imageDiv3)
 
   var titleDiv3 = $("<h4>");
   $(titleDiv3).text(recipeThreeName);
   // console.log(titleDiv3);
-  $("#recipe-container3").append(titleDiv3);
-
-
-  var imageDiv3 = $("<img>")
-  $(imageDiv3).attr("src", recipeThreeImage);
-  $("#recipe-container3").append(imageDiv3)
+  $("#recipe-container3").prepend(titleDiv3);
 
   // var ingredientsDiv3 = $("<h6>");
   // $(ingredientsDiv3).text("Ingredients");
@@ -393,8 +404,9 @@ function postRecipeFunction3() {
 
       // $(newDiv).addClass("col-4");
 
-      $("#recipe-container3").append(newDiv);
-
+      $("#button-ingr3").on("click", function () {
+      $("#button-ingr3").append(newDiv);
+      })
 
     }
 
@@ -424,7 +436,11 @@ function postRecipeFunction3() {
       $(nutrition3).append("Fat: " + resp3b.fat + "<br>");
       $(nutrition3).append("Protein: " + resp3b.protein + "<br>");
       console.log(nutrition3);
-      $("#recipe-container3").append(nutrition3);
+
+      $("#button-nutr3").on("click", function () {
+        $("#button-nutr3").append(nutrition3);
+      })
+
 
       // nutritionGot1 = true;
     })
@@ -456,8 +472,9 @@ function postRecipeFunction3() {
         instructionsDiv3 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
         
         $(instructionsDiv3).append("<br>" + "<br>" + "Step Number" + [i+1] + ": " + recipeSteps[i].step);
-        $("#recipe-container3").append(instructionsDiv3);
-
+        $("#button-instr3").on("click", function () {
+          $("#button-instr3").append(instructionsDiv3);
+        })
       }
 
 
