@@ -18,6 +18,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <!-- Font Awesome 5 for icons -->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    
     <!-- rateYo CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script> 
@@ -49,30 +52,41 @@
             </form>
             </div>
         </div><br> -->
-    
+
+
         <p>Select your target category:</p>
 
         <div class="row">
+            <div class="col-md-12">
+        <div id="hidtitle1">Weight Loss</div>
+        <div id="hidtitle2">Healthy General</div>
+        <div id="hidtitle3">Weight Gain</div>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-4">
-                <div class="card">
+                <div class="card" id="card1">
                     <h4 class="card-title">Weight Loss</h4>
                     <div class="card-body">
                         <button id="button-1" class="btn btn-light calorie-button" value="1750"><span>Conservative</span></button>
                     </div>
                 </div>
             </div>
+    
 
             <div class="col-md-4">
-                <div class="card">
+                <div class="card" id="card2">
                     <h4 class="card-title">Healthy General</h4>
                     <div class="card-body">
                         <button id="button-2" class="btn btn-light calorie-button" value="2000"><span>Maintain</span></button>
                     </div>
                 </div>
             </div>
+            
 
             <div class="col-md-4">
-                <div class="card">
+                <div class="card" id="card3">
                     <h4 class="card-title">Weight Gain</h4>
                     <div class="card-body">
                         <button id="button-3" class="btn btn-light calorie-button" value="2500"><span>Conservative</span></button>
@@ -81,32 +95,34 @@
                     </div>
                 </div>
             </div>
+        
 
         </div>
         <br>
 
         <br>
         <div class="row">
-                <div class="card col-4"  id="recipe-container1">
-                    <button id="button-ingr1" ><span>Ingredients here</span></button>
-                    <button id="button-nutr1" ><span>Nutrition here</span></button>
-                    <button id="button-instr1" ><span>Steps here</span></button>
-                </div>
-                <div class="card col-4"  id="recipe-container2">
-                    <button id="button-ingr2" ><span>Ingredients here</span></button>
-                    <button id="button-nutr2" ><span>Nutrition here</span></button>
-                    <button id="button-instr2" ><span>Steps here</span></button>
+                <div class="card col-4"  id="recipe-container1"><br>
+                    <i class='fas fa-heart'></i>
+                    <button id="button-nutr1"><span id="mySpan1">Nutrition Here</span></button><br>
                 </div>
 
-                <div class="card col-4"  id="recipe-container3">
-                    <button id="button-ingr3" ><span>Ingredients here</span></button>
-                    <button id="button-nutr3" ><span>Nutrition here</span></button>
-                    <button id="button-instr3" ><span>Steps here</span></button>
+                <div class="card col-4"  id="recipe-container2"><br>
+                    <button id="button-nutr2"><span id="mySpan2">Nutrition Here</span></button><br>
                 </div>
-        </div>
-        
+
+                <div class="card col-4"  id="recipe-container3"><br>
+                    <button id="button-nutr3"><span id="mySpan3">Nutrition Here</span></button><br>
+                </div>
+        </div><br>
+
+        <div class="row">
+            <div class="card col-4"  id="ingr-container1"><span id="mySpan4">Ingredients:</span></div>
+            <div class="card col-4"  id="ingr-container2"><span id="mySpan5">Ingredients:</span></div>
+            <div class="card col-4"  id="ingr-container3"><span id="mySpan6">Ingredients:</span></div>
 
     </div>
+    <br>
     <!--         Local Script           -->
     <script src="assets/javascript/app.js"></script>
 

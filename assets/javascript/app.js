@@ -33,15 +33,81 @@ $("#rateYo").rateYo({
 
 })
 
+// sweet alert function 
 $("#rateYo").on("click", function () {
   swal("Thanks for your review! We appreciate your feedback.");
+  $("#rateYo").hide(); 
+  $("#rate").hide(); 
 })
 
-//First create an onclick listener to listen which button value is selected on first page
+// hidden containers 
 $("#recipe-container1").hide();
 $("#recipe-container2").hide();
 $("#recipe-container3").hide();
 
+$("#ingr-container1").hide();
+$("#ingr-container2").hide();
+$("#ingr-container3").hide();
+
+$("#hidtitle1").hide();
+$("#hidtitle2").hide();
+$("#hidtitle3").hide();
+
+// button clicks to remove containers once category is chosen:
+
+//Weight Loss 
+$("#button-1").on('click', function() {
+  $("#card1").hide();
+  $("#card2").hide();
+  $("#card3").hide();
+  $("p").hide();
+  $("#hidtitle1").show();
+});
+
+//General
+$("#button-2").on('click', function() {
+  $("#card1").hide();
+  $("#card2").hide();
+  $("#card3").hide();
+  $("p").hide();
+  $("#hidtitle2").show();
+});
+
+//Weight Gain
+$("#button-3").on('click', function() {
+  $("#card1").hide();
+  $("#card2").hide();
+  $("#card3").hide();
+  $("p").hide();
+  $("#hidtitle3").show();
+});
+
+$("#button-4").on('click', function() {
+  $("#card1").hide();
+  $("#card2").hide();
+  $("#card3").hide();
+  $("p").hide();
+  $("#hidtitle3").show();
+});
+
+$("#button-5").on('click', function() {
+  $("#card1").hide();
+  $("#card2").hide();
+  $("#card3").hide();
+  $("p").hide();
+  $("#hidtitle3").show();
+});
+
+$(".fa-heart").on('click', function() {
+      $(this).css('color', 'red');
+});
+
+// minimize function for ingredient containers
+$(".fa-minus").on('click', function () {
+  $("#ingr-container1").hide();
+});
+
+//First create an onclick listener to listen which button value is selected on first page
 $(".calorie-button").on("click", function () {
 
   chosenCalories = $(this).val();
@@ -97,7 +163,7 @@ function postRecipeFunction1() {
   $(imageDiv1).attr("src", recipeOneImage);
   $("#recipe-container1").prepend(imageDiv1);
 
-  var titleDiv1 = $("<h4>");
+  var titleDiv1 = $("<h5>");
   $(titleDiv1).text(recipeOneName);
   // console.log(titleDiv1);
   $("#recipe-container1").prepend(titleDiv1);
@@ -120,6 +186,7 @@ function postRecipeFunction1() {
 
     // console.log(resp1a);
     $("#recipe-container1").show();
+    $("#ingr-container1").show();
     // $("#recipe-container").html(resp1);
 
     // console.log(resp1a.ingredients)
@@ -138,10 +205,8 @@ function postRecipeFunction1() {
       $(newDiv).html("<hr>" + value + " " + unit + " " + name);
 
       // $(newDiv).addClass("col-4");
-      
-      $("#button-ingr1").on("click", function () {
-        $("#button-ingr1").append(newDiv);
-      })
+    
+        $("#ingr-container1").append(newDiv);
       
     }
 
@@ -174,7 +239,9 @@ function postRecipeFunction1() {
       console.log(nutrition1);
       $("#button-nutr1").on("click", function () {
         $("#button-nutr1").append(nutrition1);
+        $("#mySpan1").hide();
       })
+      
       // nutritionGot1 = true;
     })
 
@@ -227,7 +294,7 @@ function postRecipeFunction2() {
   $(imageDiv2).attr("src", recipeTwoImage);
   $("#recipe-container2").prepend(imageDiv2)
 
-  var titleDiv2 = $("<h4>");
+  var titleDiv2 = $("<h5>");
   $(titleDiv2).text(recipeTwoName);
   // console.log(titleDiv2);
   $("#recipe-container2").prepend(titleDiv2);
@@ -250,6 +317,7 @@ function postRecipeFunction2() {
 
     // console.log(resp2);
     $("#recipe-container2").show();
+    $("#ingr-container2").show();
     // $("#recipe-container").html(resp1);
 
     // console.log(resp2.ingredients)
@@ -269,13 +337,9 @@ function postRecipeFunction2() {
 
       // $(newDiv).addClass("col-4");
 
-
-      $("#button-ingr2").on("click", function () {
-      $("#button-ingr2").append(newDiv);
-    })
-
-
+      $("#ingr-container2").append(newDiv);
     }
+
     getNutrition2();
 
   })
@@ -305,7 +369,8 @@ function postRecipeFunction2() {
 
       $("#button-nutr2").on("click", function () {
         $("#button-nutr2").append(nutrition2);
-    })
+        $("#mySpan2").hide();
+    });
 
       // nutritionGot1 = true;
     })
@@ -362,7 +427,7 @@ function postRecipeFunction3() {
   $(imageDiv3).attr("src", recipeThreeImage);
   $("#recipe-container3").prepend(imageDiv3)
 
-  var titleDiv3 = $("<h4>");
+  var titleDiv3 = $("<h5>");
   $(titleDiv3).text(recipeThreeName);
   // console.log(titleDiv3);
   $("#recipe-container3").prepend(titleDiv3);
@@ -385,6 +450,7 @@ function postRecipeFunction3() {
 
     // console.log(resp3);
     $("#recipe-container3").show();
+    $("#ingr-container3").show();
     // $("#recipe-container").html(resp1);
 
     // console.log(resp3.ingredients)
@@ -404,9 +470,8 @@ function postRecipeFunction3() {
 
       // $(newDiv).addClass("col-4");
 
-      $("#button-ingr3").on("click", function () {
-      $("#button-ingr3").append(newDiv);
-      })
+
+      $("#ingr-container3").append(newDiv);
 
     }
 
@@ -439,6 +504,7 @@ function postRecipeFunction3() {
 
       $("#button-nutr3").on("click", function () {
         $("#button-nutr3").append(nutrition3);
+        $("#mySpan3").hide();
       })
 
 
