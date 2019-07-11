@@ -33,9 +33,10 @@ p {
     text-align:center;
     border-color: black;
     background-color: white;
-    opacity: 0.8;
+    opacity: 0.9;
     height: 180px;
 }
+
 .card-title {
     font-family: 'PT Sans', sans-serif;
     font-size: 22px;
@@ -59,27 +60,53 @@ p {
     font-family: 'PT Sans', sans-serif;
     font-size: 15px;
 }
-#recipe-container1 {
+#recipe-container1, #recipe-container2 , #recipe-container3  {
     height: 100%;
     font-family: 'Viga', sans-serif;
     border: 1px solid black;
 }
-#recipe-container2 {
-    height: 100%;
-    font-family: 'Viga', sans-serif;
-    border: 1px solid black;
-}
-#recipe-container3 {
-    height: 100%;
-    font-family: 'Viga', sans-serif;
-    border: 1px solid black;
-}
+
 img {
     height: 200px;
     width: 250px;
     align-self: center;
 }
+
 #rateYo {
     margin: 0 auto; 
+}
+
+#button-nutr1, #button-nutr2, #button-nutr3 {
+    border-radius: 25px;
+    background-color: green;
+    color: white;
+}
+
+#ingr-container1, #ingr-container2, #ingr-container3 {
+    text-align:center;
+    border-color:black;
+    background-color: white;
+    opacity: 0.9;
+    height: 100%;
+    border-radius: 25px;
+}
+
+#mySpan4, #mySpan5, #mySpan6 {
+    color: green;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 25px;
+}
+
+#hidtitle1, #hidtitle2, #hidtitle3 {
+    font-family: 'PT Sans', sans-serif;
+    color: white;
+    background-color: black;
+    font-size: 35px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+#fa-heart { 
+    color: white;
 }
 
