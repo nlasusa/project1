@@ -1,6 +1,8 @@
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\///\\\//\\\///\\/
 
-
-//\\//\\ CREATE VARIABLES //\\//\\//\\
+/////////////////////////////////////////////////////////////////////////////////
+////////////////////////   INITIALIZE VARIABLES   ///////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
 var recipeChosen;
 var recipeName;
@@ -19,11 +21,9 @@ var nutr1Showing = false;
 var nutr2Showing = false;
 var nutr3Showing = false;
 
-// var nutritionGot1 = false;
 
-var apiKey = "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16";
-
-
+var spoonacularApiKey = "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16";
+var cocktaildbApiKey = "f580f78a4emshcd303cfd9f4f498p15acdajsnc358ed3e2963";
 
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////RATE YO CDN /////////////////////////////////
@@ -58,7 +58,7 @@ $("#rateYo").on("click", function () {
 
 
 ///////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////hIDDEN CONTAINERS ///////////////////////////
+/////////////////////  INITIALIZE HIDDEN CONTAINERS ///////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
 // hidden containers 
@@ -81,10 +81,35 @@ $("#drink-description-container").hide();
 
 $("#recipe-instructions").hide()
 
-// button clicks to remove containers once category is chosen:
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\///\\\//\\\///\\/
+
+/////////////////////////////////////////////////////////////////////////////////
+///////////////////// HIDE ELEMENTS BASED ON CLICKS /////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+
 
 //Weight Loss 
-$("#button-1").on('click', function() {
+$("#button-1a").on('click', function() {
+  $("#card1").hide();
+  $("#card2").hide();
+  $("#card3").hide();
+  $("#custom-calories-search").hide();
+  $("p").hide();
+  $("#hidtitle1").show();
+  $("#refresh-button").show();
+});
+
+$("#button-1b").on('click', function() {
+  $("#card1").hide();
+  $("#card2").hide();
+  $("#card3").hide();
+  $("#custom-calories-search").hide();
+  $("p").hide();
+  $("#hidtitle1").show();
+  $("#refresh-button").show();
+});
+
+$("#button-1c").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
@@ -106,7 +131,7 @@ $("#button-2").on('click', function() {
 });
 
 //Weight Gain
-$("#button-3").on('click', function() {
+$("#button-3a").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
@@ -116,7 +141,7 @@ $("#button-3").on('click', function() {
   $("#refresh-button").show();
 });
 
-$("#button-4").on('click', function() {
+$("#button-3b").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
@@ -126,7 +151,7 @@ $("#button-4").on('click', function() {
   $("#refresh-button").show();
 });
 
-$("#button-5").on('click', function() {
+$("#button-3c").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
@@ -168,14 +193,11 @@ $("#refresh-button").on("click", function(){
 ///////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////// RECIPE API CALL - VIA BUTTON PRESS /////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
-//First create an onclick listener to listen which button value is selected on first page
+
+//First create an onclick listener to listen TO which button value is selected on first page
 $(".calorie-button").on("click", function () {
 
   chosenCalories = $(this).val();
-  console.log(chosenCalories);
-
-//   calories = $('.calorie-button').val();
-// console.log(calories )
 
   console.log("The calories you've chosen to search are: " + chosenCalories);
 
@@ -192,13 +214,16 @@ $(".calorie-button").on("click", function () {
   }).then(function (response) {
     console.log(response);
 
+    //Pulls meal array from JSON
     var meal = response.meals
+    //Captures Meal ID#, to be used in subsequent API Calls
     recipeOne = meal[0].id;
+    //Captures Meal Title, to be put in our container
     recipeOneName = meal[0].title;
+    //Captures Meal Image, to be put in our container
     recipeOneImage = "https://webknox.com/recipeImages/" + meal[0].image;
 
-    // console.log(recipeOneImage);
-
+    //These variable initializers mimic the above for the other 2 recipes
     recipeTwo = meal[1].id;
     recipeTwoName = meal[1].title;
     recipeTwoImage = "https://webknox.com/recipeImages/" + meal[1].image;
@@ -207,15 +232,14 @@ $(".calorie-button").on("click", function () {
     recipeThreeName = meal[2].title;
     recipeThreeImage = "https://webknox.com/recipeImages/" + meal[2].image;
 
-    // console.log(recipeOne);
-
+    //This calls the functions which will run our API calls getting the ingredients, nutrition facts, and recipes for each of the recipes
     postRecipeFunction1();
     postRecipeFunction2();
     postRecipeFunction3();
   });
 
 
-});  //closing click
+}); 
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -290,6 +314,8 @@ $("#submit-calorie").on("click", function(event) {
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////// Random Drink API ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
+
+/// When the Random Drink button is selected it will populate a random drink for you!
 $("#drink-button").on("click", function(event){
   event.preventDefault();
 
@@ -297,6 +323,7 @@ $("#drink-title-container").show();
 $("#drink-ingredients-container").show();
 $("#drink-description-container").show();
 
+//This is the Ajax call using the Cocktail-db
 $.ajax({
   url:
     "https://the-cocktail-db.p.rapidapi.com/random.php",
@@ -381,21 +408,17 @@ $.ajax({
 
 function postRecipeFunction1() {
 
-
+  //This will put the image grabbed earlier into the main recipe container
    var imageDiv1 = $("<img>")
   $(imageDiv1).attr("src", recipeOneImage);
   $("#recipe-container1").prepend(imageDiv1);
 
+  //This will put the title grabbed earlier into the main recipe container
   var titleDiv1 = $("<h5>");
   $(titleDiv1).text(recipeOneName);
-  // console.log(titleDiv1);
   $("#recipe-container1").prepend(titleDiv1);
 
-
-  // var ingredientsDiv1 = $("<h6>");
-  // $(ingredientsDiv1).text("Ingredients");
-  // $("recipe-container1").append(ingredientsDiv1);
-
+  ///This is the Ajax call that used the meal ID# to get the ingredients
   $.ajax({
     url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeOne + "/ingredientWidget.json",
     type: "GET",
@@ -407,19 +430,17 @@ function postRecipeFunction1() {
     }
   }).then(function (resp1a) {
 
-    // console.log(resp1a);
+    //This will display the recipe container cards
     $("#recipe-container1").show();
     $("#ingr-container1").show();
-    // $("#recipe-container").html(resp1);
 
-    // console.log(resp1a.ingredients)
+    //This will assign ingredient array to a variable from the JSON object
     var ingredients = resp1a.ingredients;
 
+    //This is a for loop that will gather all of the ingredients and put them to a Div
     for (i = 0; i < ingredients.length; i++) {
-      // $("#recipe-container").text(ingredients[i].name);
-      // console.log(i);
+
       var newDiv = $("<div>");
-      // $(newDiv).text(ingredients[i].name);
 
       var name = ingredients[i].name;
       var value = ingredients[i].amount.us.value.toFixed(2);
@@ -427,12 +448,10 @@ function postRecipeFunction1() {
 
       $(newDiv).html("<hr>" + value + " " + unit + " " + name);
 
-      // $(newDiv).addClass("col-4");
-    
         $("#ingr-container1").append(newDiv);
       
     }
-
+    //This will call the next API that will gather the Nutrition facts
     getNutrition1();
 
   })
@@ -440,8 +459,7 @@ function postRecipeFunction1() {
 
   function getNutrition1() {
 
-    // if(nutritionGot1 === false) {
-
+    //This Ajax call will get the nutrition facts based on the 1st Recipe ID#
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeOne + "/nutritionWidget.json",
       type: "GET",
@@ -465,6 +483,8 @@ function postRecipeFunction1() {
       $(nutrition1).append("Fat: " + resp1b.fat + "<br>");
       $(nutrition1).append("Protein: " + resp1b.protein + "<br>");
       
+      //This will allow us to expand the details for the Nutrition facts as well as close it
+      //Note the conditionals which is how you can get the button/description to revert back to normal
       $("#button-nutr1").on("click", function () {
         
         if (nutr1Showing === false) {
@@ -487,12 +507,14 @@ function postRecipeFunction1() {
       // nutritionGot1 = true;
     })
 
+    //This will call the final API call of this Recipe, to gather the intructions
     getInstructions1();
 
   }
 
   function getInstructions1() {
 
+    //This will use the Meal ID# to call an API that will provide us with the recipe instructions
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeOne + "/analyzedInstructions?stepBreakdown=false",
       type: "GET",
@@ -503,14 +525,14 @@ function postRecipeFunction1() {
           "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
       }
     }).then(function(resp1c){
-      console.log(resp1c);
 
-        // instrTitle1 = $("<div>")
-        // $(instrTitle1).html("<h4>" + "Recipe Instructions" + "</h4>");
       recipeSteps = resp1c[0].steps;
 
-
+      //This creates a Master Div that we will append the recipe steps to, 
+      //This is necessary to then be added to the recipe-instruction-container without needing to append the individual elements
       var instructionsMasterDiv1 = $("<div>")
+      
+      //This is our For Loop to gather the recipe instructions
       for (i = 0; i < recipeSteps.length; i++) {
         
         instructionsDiv1 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
@@ -523,6 +545,7 @@ function postRecipeFunction1() {
 
       }; 
      
+      //This click listener will listen for when the users request the Recipe Information
       $("#button-instructions1").on("click", function(){
         if (recipeShown === false) {
           console.log("You've requested instructions for recipe 1")
@@ -537,30 +560,38 @@ function postRecipeFunction1() {
     });
     })
   }
-
-
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//\\//\\//\\//\\//\\\///\\\///\\\//\/\//\//\///\\///\///\\///\\\////\\\////\\\////\\\\///\//\\
+
+ /// PLEASE NOTE THAT ALL CODE FOR POST RECIPE FUNCTIONS NUMBER 2 AND 3 WILL HAVE LIMITED PSUEDOCODE
+ /// AS THE CODE IN THESE FUNCTIONS MIMICS THE EXACT CODE FROM THE postRecipeFunction1() CODE SECTION
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////// POST RECIPE FUNCTIONS NUMBER 2 ////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////
+
 
 function postRecipeFunction2() {
 
+  //Image Div
   var imageDiv2 = $("<img>")
   $(imageDiv2).attr("src", recipeTwoImage);
   $("#recipe-container2").prepend(imageDiv2)
 
+  //Title Div
   var titleDiv2 = $("<h5>");
   $(titleDiv2).text(recipeTwoName);
-  // console.log(titleDiv2);
   $("#recipe-container2").prepend(titleDiv2);
 
-
-  // var ingredientsDiv2 = $("<h6>");
-  // $(ingredientsDiv2).text("Ingredients");
-  // $("recipe-container2").append(ingredientsDiv2);
-
+  //Ingredients API Call
   $.ajax({
     url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeTwo + "/ingredientWidget.json",
     type: "GET",
@@ -572,19 +603,16 @@ function postRecipeFunction2() {
     }
   }).then(function (resp2) {
 
-    // console.log(resp2);
     $("#recipe-container2").show();
     $("#ingr-container2").show();
-    // $("#recipe-container").html(resp1);
 
-    // console.log(resp2.ingredients)
+    //Set variable ingredients
     var ingredients = resp2.ingredients;
 
+    //For loop to gather ingredients
     for (i = 0; i < ingredients.length; i++) {
-      // $("#recipe-container").text(ingredients[i].name);
-      // console.log(i);
+ 
       var newDiv = $("<div>");
-      // $(newDiv).text(ingredients[i].name);
 
       var name = ingredients[i].name;
       var value = ingredients[i].amount.us.value.toFixed(2);
@@ -592,19 +620,18 @@ function postRecipeFunction2() {
 
       $(newDiv).html("<hr>" + value + " " + unit + " " + name);
 
-      // $(newDiv).addClass("col-4");
-
+      //Appends ingredient list to container
       $("#ingr-container2").append(newDiv);
     }
 
+    //Calls #2 of the 3 functions
     getNutrition2();
 
   })
 
   function getNutrition2() {
 
-    // if(nutritionGot1 === false) {
-
+    //API Call to get Nutrition from Recipe 2
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeTwo + "/nutritionWidget.json",
       type: "GET",
@@ -617,7 +644,7 @@ function postRecipeFunction2() {
     }).then(function (resp2b) {
       console.log(resp2b);
      
-      //Create Div to put our nutrition facts in
+      
      var nutrition2 = $("<div>");
      $(nutrition2).addClass("nutrition-2")
      
@@ -628,6 +655,7 @@ function postRecipeFunction2() {
      $(nutrition2).append("Fat: " + resp2b.fat + "<br>");
      $(nutrition2).append("Protein: " + resp2b.protein + "<br>");
      
+     //Creates click listener to expand/shrink nutrition facts
      $("#button-nutr2").on("click", function () {
        
        if (nutr2Showing === false) {
@@ -647,15 +675,15 @@ function postRecipeFunction2() {
      })
      
 
-      // nutritionGot1 = true;
     })
-
+    //Call API to get recipe instructions
   getInstructions2();
 
   }
 
   function getInstructions2() {
 
+    //Recipe instrucitons API
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeTwo + "/analyzedInstructions?stepBreakdown=false",
       type: "GET",
@@ -668,12 +696,12 @@ function postRecipeFunction2() {
     }).then(function(resp2c){
       console.log(resp2c);
 
-        // instrTitle1 = $("<div>")
-        // $(instrTitle1).html("<h4>" + "Recipe Instructions" + "</h4>");
       recipeSteps = resp2c[0].steps;
 
-      
-      var instructionsMasterDiv2 = $("<div>")
+      //Master Div
+      var instructionsMasterDiv2 = $("<div>");
+
+      //For Loop to add instruction steps
       for (i = 0; i < recipeSteps.length; i++) {
         
         instructionsDiv2 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
@@ -686,6 +714,7 @@ function postRecipeFunction2() {
 
       }; 
      
+      //Adds on click listener which will display this recipe's instructions to recipe-instruction-container
       $("#button-instructions2").on("click", function(){
         if (recipeShown === false) {
           console.log("You've requested instructions for recipe 2")
@@ -701,29 +730,36 @@ function postRecipeFunction2() {
     });
     })
   }
-
-
-
-
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//\\//\\//\\//\\//\\\///\\\///\\\//\/\//\//\///\\///\///\\///\\\////\\\////\\\////\\\\///\//\\
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////    POST RECIPE FUNCTION # 3    /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 function postRecipeFunction3() {
 
+  //Image div
   var imageDiv3 = $("<img>")
   $(imageDiv3).attr("src", recipeThreeImage);
   $("#recipe-container3").prepend(imageDiv3)
 
+  //Title div
   var titleDiv3 = $("<h5>");
   $(titleDiv3).text(recipeThreeName);
-  // console.log(titleDiv3);
   $("#recipe-container3").prepend(titleDiv3);
 
-  // var ingredientsDiv3 = $("<h6>");
-  // $(ingredientsDiv3).text("Ingredients");
-  // $("recipe-container3").append(ingredientsDiv3);
-
-
+  //API Call for ingredients
   $.ajax({
     url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeThree + "/ingredientWidget.json",
     type: "GET",
@@ -735,28 +771,20 @@ function postRecipeFunction3() {
     }
   }).then(function (resp3) {
 
-    // console.log(resp3);
     $("#recipe-container3").show();
     $("#ingr-container3").show();
-    // $("#recipe-container").html(resp1);
 
-    // console.log(resp3.ingredients)
     var ingredients = resp3.ingredients;
 
     for (i = 0; i < ingredients.length; i++) {
-      // $("#recipe-container").text(ingredients[i].name);
-      // console.log(i);
+
       var newDiv = $("<div>");
-      // $(newDiv).text(ingredients[i].name);
 
       var name = ingredients[i].name;
       var value = ingredients[i].amount.us.value.toFixed(2);
       var unit = ingredients[i].amount.us.unit;
 
       $(newDiv).html("<hr>" + value + " " + unit + " " + name);
-
-      // $(newDiv).addClass("col-4");
-
 
       $("#ingr-container3").append(newDiv);
 
@@ -768,8 +796,6 @@ function postRecipeFunction3() {
   
   function getNutrition3() {
 
-    // if(nutritionGot1 === false) {
-
     $.ajax({
       url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + recipeThree + "/nutritionWidget.json",
       type: "GET",
@@ -780,13 +806,10 @@ function postRecipeFunction3() {
           "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
       }
     }).then(function (resp3b) {
-      console.log(resp3b);
-    
-     //Create Div to put our nutrition facts in
+
      var nutrition3 = $("<div>");
      $(nutrition3).addClass("nutrition-3")
      
-     //Pushing the nutrition facts into the aforementioned Div
      $(nutrition3).append("<br>" + "<br>" + "<h4>" + "Nutrition Facts" + "</h4>")
      $(nutrition3).append("<br>" + "Calories: " + resp3b.calories + "<br>");
      $(nutrition3).append("Carbs: " + resp3b.carbs + "<br>");
@@ -800,14 +823,13 @@ function postRecipeFunction3() {
        $("#button-nutr3").append(nutrition3);
        $("#mySpan3").hide();
        nutr3Showing = true;
-       console.log(nutr3Showing)
        
        } else {
          
          $(".nutrition-3").remove();
          $("#mySpan3").show();
          nutr3Showing = false;
-         console.log(nutr3Showing);
+
        }
      })
      
@@ -816,6 +838,7 @@ function postRecipeFunction3() {
   getInstructions3();
 
   }
+
 
   function getInstructions3() {
 
@@ -831,33 +854,30 @@ function postRecipeFunction3() {
     }).then(function(resp3c){
       console.log(resp3c);
 
-        // instrTitle1 = $("<div>")
-        // $(instrTitle1).html("<h4>" + "Recipe Instructions" + "</h4>");
       recipeSteps = resp3c[0].steps;
       var instructionsMasterDiv3 = $("<div>")
       for (i = 0; i < recipeSteps.length; i++) {
         
         instructionsDiv3 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
-        console.log(instructionsDiv3);
         
         $(instructionsDiv3).append("Step Number " + [i+1] + ": " + recipeSteps[i].step);
         
-        // $("#recipe-container-guide").append(instructionsDiv3);
         $(instructionsMasterDiv3).append(instructionsDiv3);
 
       }; 
      
       $("#button-instructions3").on("click", function(){
+        
         if (recipeShown === false) {
-          console.log("You've requested instructions for recipe 3")
-        $("#recipe-instructions-title").text(" " + recipeThreeName);
-        $("#recipe-instructions").show();
-        $("#recipe-container-guide").html(instructionsMasterDiv3);
-        recipeShown = true;
+        
+          $("#recipe-instructions-title").text(" " + recipeThreeName);
+          $("#recipe-instructions").show();
+          $("#recipe-container-guide").html(instructionsMasterDiv3);
+             recipeShown = true;
 
       }else {
         $("#recipe-instructions").hide();
-        recipeShown = false;
+           recipeShown = false;
       }
     });
     })
@@ -865,20 +885,16 @@ function postRecipeFunction3() {
 
 
 }
-//This will assign the value of that button to a variable
 
 
-//This variable will be used in our AJAX call queryURL to pull the recipe
-
-//Then we will go into the JSON object and grab the data we want #1:ingredients #2: nutritionals
-
-//Assign these objects to a variable
-
-//Create a new Div 
-
-//Put the content of the JSON object variables into that Div
-
-//Append that Div to the "recipes-chosen" container
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 
-///\\\///\\\///\ CALL FUNCTIONS \\\///\\\////\\\\///
+//\\//\\//\\//\\//\\\///\\\///\\\//\/\//\//\///\\///\///\\///\\\////\\\////\\\////\\\\///\//\\
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
