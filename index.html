@@ -63,6 +63,11 @@
                 <div id="hidtitle2">Healthy General</div>
                 <div id="hidtitle3">Weight Gain</div>
             </div>
+            <div class="col-5"></div>
+            <div class="col-1">
+                <button class="btn btn-dark" id="refresh-button">Return</button>
+            </div>
+            <div class="col-5"></div>
         </div>
 
         <div class="row">
@@ -70,8 +75,12 @@
                 <div class="card" id="card1">
                     <h4 class="card-title">Weight Loss</h4>
                     <div class="card-body">
-                        <button id="button-1" class="btn btn-light calorie-button"
-                            value="1750"><span>Conservative</span></button>
+                        <button id="button-1a" class="btn btn-light calorie-button"
+                            value="1500"><span>Agressive</span></button>
+                        <button id="button-1b" class="btn btn-light calorie-button"
+                            value="1700"><span>Moderate</span></button>
+                        <button id="button-1c" class="btn btn-light calorie-button"
+                            value="1850"><span>Conservative</span></button>
                     </div>
                 </div>
             </div>
@@ -88,12 +97,12 @@
                 <div class="card" id="card3">
                     <h4 class="card-title">Weight Gain</h4>
                     <div class="card-body">
-                        <button id="button-3" class="btn btn-light calorie-button"
-                            value="2500"><span>Conservative</span></button>
-                        <button id="button-4" class="btn btn-light calorie-button"
-                            value="2750"><span>Moderate</span></button>
-                        <button id="button-5" class="btn btn-light calorie-button"
-                            value="3000"><span>Aggressive</span></button>
+                        <button id="button-3a" class="btn btn-light calorie-button"
+                            value="2250"><span>Conservative</span></button>
+                        <button id="button-3b" class="btn btn-light calorie-button"
+                            value="2500"><span>Moderate</span></button>
+                        <button id="button-3c" class="btn btn-light calorie-button"
+                            value="2750"><span>Aggressive</span></button>
                     </div>
                 </div>
             </div>
@@ -142,7 +151,7 @@
 
         <div class="row">
             <div class="card col-12" id="recipe-instructions">
-                <h4>Recipe Instructions:</h4>
+                <h4>Recipe Instructions for:<span id="recipe-instructions-title"></span></h4>
                 <div id="recipe-container-guide"></div>
             </div>
         </div>
