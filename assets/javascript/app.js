@@ -15,6 +15,9 @@ var recipeThree;
 var carlories;
 
 var recipeShown = false;
+var nutr1Showing = false;
+var nutr2Showing = false;
+var nutr3Showing = false;
 
 // var nutritionGot1 = false;
 
@@ -70,6 +73,7 @@ $("#ingr-container3").hide();
 $("#hidtitle1").hide();
 $("#hidtitle2").hide();
 $("#hidtitle3").hide();
+$("#refresh-button").hide();
 
 $("#drink-title-container").hide();
 $("#drink-ingredients-container").hide();
@@ -87,6 +91,7 @@ $("#button-1").on('click', function() {
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle1").show();
+  $("#refresh-button").show();
 });
 
 //General
@@ -97,6 +102,7 @@ $("#button-2").on('click', function() {
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle2").show();
+  $("#refresh-button").show();
 });
 
 //Weight Gain
@@ -107,6 +113,7 @@ $("#button-3").on('click', function() {
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle3").show();
+  $("#refresh-button").show();
 });
 
 $("#button-4").on('click', function() {
@@ -116,6 +123,7 @@ $("#button-4").on('click', function() {
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle3").show();
+  $("#refresh-button").show();
 });
 
 $("#button-5").on('click', function() {
@@ -125,6 +133,7 @@ $("#button-5").on('click', function() {
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle3").show();
+  $("#refresh-button").show();
 });
 
 //Custom search
@@ -136,6 +145,7 @@ $("#submit-calorie").on('click', function() {
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle3").show();
+  $("#refresh-button").show();
 });
 
 $(".fa-heart").on('click', function() {
@@ -146,6 +156,12 @@ $(".fa-heart").on('click', function() {
 $(".fa-minus").on('click', function () {
   $("#ingr-container1").hide();
 });
+
+//Refresh page button 
+$("#refresh-button").on("click", function(){
+  location.reload();
+})
+
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\///\\//\\///\//\//\//\/\//\/
 
@@ -437,17 +453,36 @@ function postRecipeFunction1() {
       }
     }).then(function (resp1b) {
       console.log(resp1b);
+
+      //Create Div to put our nutrition facts in
       var nutrition1 = $("<div>");
+      $(nutrition1).addClass("nutrition-1")
+      
+      //Pushing the nutrition facts into the aforementioned Div
       $(nutrition1).append("<br>" + "<br>" + "<h4>" + "Nutrition Facts" + "</h4>")
       $(nutrition1).append("<br>" + "Calories: " + resp1b.calories + "<br>");
       $(nutrition1).append("Carbs: " + resp1b.carbs + "<br>");
       $(nutrition1).append("Fat: " + resp1b.fat + "<br>");
       $(nutrition1).append("Protein: " + resp1b.protein + "<br>");
-      console.log(nutrition1);
+      
       $("#button-nutr1").on("click", function () {
+        
+        if (nutr1Showing === false) {
+        
         $("#button-nutr1").append(nutrition1);
         $("#mySpan1").hide();
+        nutr1Showing = true;
+        console.log(nutr1Showing)
+        
+        } else {
+          
+          $(".nutrition-1").remove();
+          $("#mySpan1").show();
+          nutr1Showing = false;
+          console.log(nutr1Showing);
+        }
       })
+      
       
       // nutritionGot1 = true;
     })
@@ -491,6 +526,7 @@ function postRecipeFunction1() {
       $("#button-instructions1").on("click", function(){
         if (recipeShown === false) {
           console.log("You've requested instructions for recipe 1")
+        $("#recipe-instructions-title").text(" " + recipeOneName);
         $("#recipe-instructions").show();
         $("#recipe-container-guide").html(instructionsMasterDiv1);
         recipeShown = true;
@@ -580,18 +616,36 @@ function postRecipeFunction2() {
       }
     }).then(function (resp2b) {
       console.log(resp2b);
-      var nutrition2 = $("<div>");
-      $(nutrition2).append("<br>" + "<br>" + "<h4>" + "Nutrition Facts" + "</h4>")
-      $(nutrition2).append("<br>" + "Calories: " + resp2b.calories + "<br>");
-      $(nutrition2).append("Carbs: " + resp2b.carbs + "<br>");
-      $(nutrition2).append("Fat: " + resp2b.fat + "<br>");
-      $(nutrition2).append("Protein: " + resp2b.protein + "<br>");
-      console.log(nutrition2);
-
-      $("#button-nutr2").on("click", function () {
-        $("#button-nutr2").append(nutrition2);
-        $("#mySpan2").hide();
-    });
+     
+      //Create Div to put our nutrition facts in
+     var nutrition2 = $("<div>");
+     $(nutrition2).addClass("nutrition-2")
+     
+     //Pushing the nutrition facts into the aforementioned Div
+     $(nutrition2).append("<br>" + "<br>" + "<h4>" + "Nutrition Facts" + "</h4>")
+     $(nutrition2).append("<br>" + "Calories: " + resp2b.calories + "<br>");
+     $(nutrition2).append("Carbs: " + resp2b.carbs + "<br>");
+     $(nutrition2).append("Fat: " + resp2b.fat + "<br>");
+     $(nutrition2).append("Protein: " + resp2b.protein + "<br>");
+     
+     $("#button-nutr2").on("click", function () {
+       
+       if (nutr2Showing === false) {
+       
+       $("#button-nutr2").append(nutrition2);
+       $("#mySpan2").hide();
+       nutr2Showing = true;
+       console.log(nutr2Showing)
+       
+       } else {
+         
+         $(".nutrition-2").remove();
+         $("#mySpan2").show();
+         nutr2Showing = false;
+         console.log(nutr2Showing);
+       }
+     })
+     
 
       // nutritionGot1 = true;
     })
@@ -635,6 +689,7 @@ function postRecipeFunction2() {
       $("#button-instructions2").on("click", function(){
         if (recipeShown === false) {
           console.log("You've requested instructions for recipe 2")
+        $("#recipe-instructions-title").text(" " + recipeTwoName);
         $("#recipe-instructions").show();
         $("#recipe-container-guide").html(instructionsMasterDiv2);
         recipeShown = true;
@@ -726,21 +781,36 @@ function postRecipeFunction3() {
       }
     }).then(function (resp3b) {
       console.log(resp3b);
-      var nutrition3 = $("<div>");
-      $(nutrition3).append("<br>" + "<br>" + "<h4>" + "Nutrition Facts" + "</h4>")
-      $(nutrition3).append("<br>" + "Calories: " + resp3b.calories + "<br>");
-      $(nutrition3).append("Carbs: " + resp3b.carbs + "<br>");
-      $(nutrition3).append("Fat: " + resp3b.fat + "<br>");
-      $(nutrition3).append("Protein: " + resp3b.protein + "<br>");
-      console.log(nutrition3);
-
-      $("#button-nutr3").on("click", function () {
-        $("#button-nutr3").append(nutrition3);
-        $("#mySpan3").hide();
-      })
-
-
-      // nutritionGot1 = true;
+    
+     //Create Div to put our nutrition facts in
+     var nutrition3 = $("<div>");
+     $(nutrition3).addClass("nutrition-3")
+     
+     //Pushing the nutrition facts into the aforementioned Div
+     $(nutrition3).append("<br>" + "<br>" + "<h4>" + "Nutrition Facts" + "</h4>")
+     $(nutrition3).append("<br>" + "Calories: " + resp3b.calories + "<br>");
+     $(nutrition3).append("Carbs: " + resp3b.carbs + "<br>");
+     $(nutrition3).append("Fat: " + resp3b.fat + "<br>");
+     $(nutrition3).append("Protein: " + resp3b.protein + "<br>");
+     
+     $("#button-nutr3").on("click", function () {
+       
+       if (nutr3Showing === false) {
+       
+       $("#button-nutr3").append(nutrition3);
+       $("#mySpan3").hide();
+       nutr3Showing = true;
+       console.log(nutr3Showing)
+       
+       } else {
+         
+         $(".nutrition-3").remove();
+         $("#mySpan3").show();
+         nutr3Showing = false;
+         console.log(nutr3Showing);
+       }
+     })
+     
     })
 
   getInstructions3();
@@ -780,6 +850,7 @@ function postRecipeFunction3() {
       $("#button-instructions3").on("click", function(){
         if (recipeShown === false) {
           console.log("You've requested instructions for recipe 3")
+        $("#recipe-instructions-title").text(" " + recipeThreeName);
         $("#recipe-instructions").show();
         $("#recipe-container-guide").html(instructionsMasterDiv3);
         recipeShown = true;
