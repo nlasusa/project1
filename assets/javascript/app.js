@@ -14,6 +14,8 @@ var recipeThree;
 
 var carlories;
 
+var recipeShown = false;
+
 // var nutritionGot1 = false;
 
 var apiKey = "583e89ac2fmsh3176bf5e7b70170p19a52cjsn4591ad6ecf16";
@@ -72,6 +74,8 @@ $("#hidtitle3").hide();
 $("#drink-title-container").hide();
 $("#drink-ingredients-container").hide();
 $("#drink-description-container").hide();
+
+$("#recipe-instructions").hide()
 
 // button clicks to remove containers once category is chosen:
 
@@ -470,21 +474,32 @@ function postRecipeFunction1() {
         // $(instrTitle1).html("<h4>" + "Recipe Instructions" + "</h4>");
       recipeSteps = resp1c[0].steps;
 
+
+      var instructionsMasterDiv1 = $("<div>")
       for (i = 0; i < recipeSteps.length; i++) {
-
-        instructionsDiv1 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
         
-        $(instructionsDiv1).append("<br>" + "<br>" + "Step Number" + [i+1] + ": " + recipeSteps[i].step);
+        instructionsDiv1 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
+        console.log(instructionsDiv1);
+        
+        $(instructionsDiv1).append("Step Number " + [i+1] + ": " + recipeSteps[i].step);
+        
+        // $("#recipe-container-guide").append(instructionsDiv3);
+        $(instructionsMasterDiv1).append(instructionsDiv1);
 
-        $("#button-instr1").on("click", function () {
-        $("#button-instr1").append(instructionsDiv1);
-        })
-
+      }; 
+     
+      $("#button-instructions1").on("click", function(){
+        if (recipeShown === false) {
+          console.log("You've requested instructions for recipe 1")
+        $("#recipe-instructions").show();
+        $("#recipe-container-guide").html(instructionsMasterDiv1);
+        recipeShown = true;
+      }else {
+        $("#recipe-instructions").hide();
+        recipeShown = false;
       }
-
-
+    });
     })
-
   }
 
 
@@ -603,22 +618,33 @@ function postRecipeFunction2() {
         // $(instrTitle1).html("<h4>" + "Recipe Instructions" + "</h4>");
       recipeSteps = resp2c[0].steps;
 
+      
+      var instructionsMasterDiv2 = $("<div>")
       for (i = 0; i < recipeSteps.length; i++) {
-
-        instructionsDiv2 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
         
-        $(instructionsDiv2).append("<br>" + "<br>" + "Step Number" + [i+1] + ": " + recipeSteps[i].step);
+        instructionsDiv2 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
+        console.log(instructionsDiv2);
+        
+        $(instructionsDiv2).append("Step Number " + [i+1] + ": " + recipeSteps[i].step);
+        
+        // $("#recipe-container-guide").append(instructionsDiv3);
+        $(instructionsMasterDiv2).append(instructionsDiv2);
 
+      }; 
+     
+      $("#button-instructions2").on("click", function(){
+        if (recipeShown === false) {
+          console.log("You've requested instructions for recipe 2")
+        $("#recipe-instructions").show();
+        $("#recipe-container-guide").html(instructionsMasterDiv2);
+        recipeShown = true;
 
-        $("#button-instr2").on("click", function () {
-          $("#button-instr2").append(instructionsDiv2);
-          })
-
+      }else {
+        $("#recipe-instructions").hide();
+        recipeShown = false;
       }
-
-
+    });
     })
-
   }
 
 
@@ -738,20 +764,32 @@ function postRecipeFunction3() {
         // instrTitle1 = $("<div>")
         // $(instrTitle1).html("<h4>" + "Recipe Instructions" + "</h4>");
       recipeSteps = resp3c[0].steps;
-
+      var instructionsMasterDiv3 = $("<div>")
       for (i = 0; i < recipeSteps.length; i++) {
-
-        instructionsDiv3 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
         
-        $(instructionsDiv3).append("<br>" + "<br>" + "Step Number" + [i+1] + ": " + recipeSteps[i].step);
-        $("#button-instr3").on("click", function () {
-          $("#button-instr3").append(instructionsDiv3);
-        })
+        instructionsDiv3 = $("<li>").addClass("ui-menu-item").attr('role', 'menuitem');
+        console.log(instructionsDiv3);
+        
+        $(instructionsDiv3).append("Step Number " + [i+1] + ": " + recipeSteps[i].step);
+        
+        // $("#recipe-container-guide").append(instructionsDiv3);
+        $(instructionsMasterDiv3).append(instructionsDiv3);
+
+      }; 
+     
+      $("#button-instructions3").on("click", function(){
+        if (recipeShown === false) {
+          console.log("You've requested instructions for recipe 3")
+        $("#recipe-instructions").show();
+        $("#recipe-container-guide").html(instructionsMasterDiv3);
+        recipeShown = true;
+
+      }else {
+        $("#recipe-instructions").hide();
+        recipeShown = false;
       }
-
-
+    });
     })
-
   }
 
 
