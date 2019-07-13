@@ -10,12 +10,14 @@ h1 {
     margin-top: 15px;
     color: white;
 }
+
 h2 {
     font-size: 45px;
     text-align: center;
     color: white;
     font-family: 'Caveat', cursive;
 }
+
 p {
     color: white;
     font-family: 'PT Sans', sans-serif;
@@ -61,9 +63,10 @@ p {
     font-size: 15px;
 }
 #recipe-container1, #recipe-container2 , #recipe-container3  {
-    height: 100%;
+    height: 100%; 
     font-family: 'Viga', sans-serif;
     border: 1px solid black;
+    margin-bottom: 10px;
 }
 
 img {
@@ -110,14 +113,62 @@ img {
     color: white;
 }
 
+#chosen-calories {
+    color:white;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 20px;
+    border: none;
+}
 
+#submit-calorie {
+    color: white;
+    background-color: #2F9CEF;
+}
 
 #drink-image {
     height: 150px;
     width: 150px;
 }
 
+#button-instructions1, #button-instructions2, #button-instructions3 {
+    border-radius: 25px;
+    background-color: #2F9CEF;
+    color: white;
+}
+
+#recipe-instructions  {
+    margin-top: 15px; 
+    margin-bottom: 15px;
+    height: 100%; 
+    font-family: 'PT Sans', sans-serif;
+}
 
 #recipe-container-guide {
-    height: 500px;
+    text-align: left; 
+    clear: both;
 }
+
+#refresh-button {
+    margin-top: 10px; 
+}
+
+#card4 {
+    padding-top: 20px; 
+    background-color: orange; 
+    border: none; 
+    font-family: 'Pacifico', cursive;
+}
+
+.card-title-rec {
+    font-size: 50px;
+}
+
+#drink-title-container, #drink-ingredients-container, #drink-description-container {
+    padding: none; 
+    font-family: 'Viga', sans-serif;
+    font-size: 22px;
+    height: 100%; 
+    border: none; 
+}
+
+/* // text-shadow: orange 2px 0 15px; */

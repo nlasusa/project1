@@ -10,7 +10,7 @@
 
     <!-- // bootstrap CSS  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans|Caveat+Brush|Rammetto+One|Viga|Caveat&display=swap"
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans|Caveat+Brush|Rammetto+One|Viga|Caveat|Pacifico|Mountains+of+Christmas&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/style/style.css">
 
@@ -21,6 +21,10 @@
     <!-- Font Awesome 5 for icons -->
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
         integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    
+    <!-- Icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
     <!-- rateYo CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
@@ -36,38 +40,35 @@
     <h1>Nutri-Prep</h1>
     <h2>Recipes With Your Health & Goals In Mind</h2><br>
     <div id="rateYo"></div>
-    <div id="rate">How are we doing? RATE US</div><br><br>
+    <div id="rate">How are we doing? RATE US</div>
+    <br>
 
 
     <div class="container">
-        <!-- 
+
         <div class="row">
             <div class="col-md-4">
-            <form id="dietaryinfo">
-                <input type="checkbox" id="Vegetarian"> Vegetarian<br>
-                <input type="checkbox" id="Gluten-Free"> Gluten-Free<br>
-                <input type="checkbox" id="Keto"> Keto<br>
-                <input type="checkbox" id="Dairy-Free"> Dairy-Free<br>
-                <input type="checkbox" id="Kosher"> Kosher<br><br>
-                <input type="submit" id="Submit"> <value="Submit">
-            </form>
+                <div id="custom-calories-search">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <span id="chosen-calories">Enter your daily calorie goal:</span>
+                                <input class="form-control" id="custom-calorie-count" type="text">
+                            </div>
+                            <button class="btn btn-primary" id="submit-calorie" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div><br> -->
-
-
-        <p>Select your target category:</p>
+        </div>
 
         <div class="row">
             <div class="col-md-12">
                 <div id="hidtitle1">Weight Loss</div>
                 <div id="hidtitle2">Healthy General</div>
                 <div id="hidtitle3">Weight Gain</div>
+                <button class="btn" id="refresh-button"><i class='fas fa-arrow-left'></i></i></button>
             </div>
-            <div class="col-5"></div>
-            <div class="col-1">
-                <button class="btn btn-dark" id="refresh-button">Return</button>
-            </div>
-            <div class="col-5"></div>
         </div>
 
         <div class="row">
@@ -75,12 +76,12 @@
                 <div class="card" id="card1">
                     <h4 class="card-title">Weight Loss</h4>
                     <div class="card-body">
-                        <button id="button-1a" class="btn btn-light calorie-button"
-                            value="1500"><span>Agressive</span></button>
-                        <button id="button-1b" class="btn btn-light calorie-button"
-                            value="1700"><span>Moderate</span></button>
                         <button id="button-1c" class="btn btn-light calorie-button"
                             value="1850"><span>Conservative</span></button>
+                        <button id="button-1b" class="btn btn-light calorie-button"
+                            value="1700"><span>Moderate</span></button>
+                        <button id="button-1a" class="btn btn-light calorie-button"
+                            value="1500"><span>Aggressive</span></button>
                     </div>
                 </div>
             </div>
@@ -107,47 +108,27 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <div class="card" id="custom-calories-search">
-                    <h4 class="card-title">Custom Search</h4>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="Chosen-calories">Choose your Calories:</label>
-                                <input class="form-control" id="custom-calorie-count" type="text">
-                            </div>
-                            <button class="btn btn-primary" id="submit-calorie" type="submit">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4"></div>
-        </div>
-        <br>
 
-        <br>
         <div class="row">
             <div class="card col-4" id="recipe-container1"><br>
-                <i class='fas fa-heart'></i>
-                <button id="button-instructions1">Recipe Instructions</button>
-                <button id="button-nutr1"><span id="mySpan1">Nutrition Here</span></button><br>
+                <i class='fas fa-heart'></i><br>
+                <button id="button-nutr1"><span id="mySpan1">Nutrition Here</span></button>
+                <button id="button-instructions1">Recipe Instructions</button><br>
             </div>
 
             <div class="card col-4" id="recipe-container2"><br>
-                <button id="button-instructions2">Recipe Instructions</button>
-                <button id="button-nutr2"><span id="mySpan2">Nutrition Here</span></button><br>
+                <i class='fas fa-heart'></i><br>
+                <button id="button-nutr2"><span id="mySpan2">Nutrition Here</span></button>
+                <button id="button-instructions2">Recipe Instructions</button><br>
             </div>
 
             <div class="card col-4" id="recipe-container3"><br>
-                <button id="button-instructions3">Recipe Instructions</button>
-                <button id="button-nutr3"><span id="mySpan3">Nutrition Here</span></button><br>
+                <i class='fas fa-heart'></i><br>
+                <button id="button-nutr3"><span id="mySpan3">Nutrition Here</span></button>
+                <button id="button-instructions3">Recipe Instructions</button><br>
             </div>
         </div>
-        
-        <br>
-        <br>
+    
 
         <div class="row">
             <div class="card col-12" id="recipe-instructions">
@@ -155,42 +136,50 @@
                 <div id="recipe-container-guide"></div>
             </div>
         </div>
-        <br>
-        <br>
+        
         <div class="row">
             <div class="card col-4" id="ingr-container1"><span id="mySpan4">Ingredients:</span></div>
             <div class="card col-4" id="ingr-container2"><span id="mySpan5">Ingredients:</span></div>
             <div class="card col-4" id="ingr-container3"><span id="mySpan6">Ingredients:</span></div>
         </div>
         
+        <br><br>
 
-
-        <br>
-        <br>
-        <br>
         <div class="row">
             <div class="col-12">
-                <div class="card">
-                    <h4 class="card-title">Adult Beverage Recommender</h4>
+                <div class="card" id="card4">
+                    <h4 class="card-title-rec">Adult Beverage Recipes</h4>
                     <div class="card-body">
-                        <button id="drink-button" class="btn btn-light" value=""><span>Random Drink</span></button>
+                        <button id="drink-button1" class="btn btn-light" value=""><span>Random Drink</span></button>
                     </div>
                 </div>
             </div>
+        </div><br>
+
+        <div class="row">
             <div class="card col-12" id="drink-title-container">
                 <h3 id="drink-title">Drink Title</h3>
                 <img id="drink-image"></img>
             </div>
+        </div>
+
+        <div class="row">
             <div class="card col-12" id="drink-ingredients-container">
                 <h4> Ingredients:</h3>
                     <div id="drink-ingredients"></div>
             </div>
+        </div> 
+
+        <div class="row">
             <div class="card col-12" id="drink-description-container">
                 <h5>Serve in a <span id="drink-glass"></span></h6>
-                    <h6>Drink type: <span id="drink-type"></span></h6>
-                    <div id="drink-mixology"></div>
+                 <h6>Drink type: <span id="drink-type"></span></h6>
+                <div id="drink-mixology"></div>
             </div>
         </div>
+
+        <br><br><br><br>
+        
 
 
 

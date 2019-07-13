@@ -73,13 +73,13 @@ $("#ingr-container3").hide();
 $("#hidtitle1").hide();
 $("#hidtitle2").hide();
 $("#hidtitle3").hide();
-$("#refresh-button").hide();
 
 $("#drink-title-container").hide();
 $("#drink-ingredients-container").hide();
 $("#drink-description-container").hide();
 
-$("#recipe-instructions").hide()
+$("#recipe-instructions").hide();
+$("#refresh-button").hide();
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\///\\\//\\\///\\/
 
@@ -93,6 +93,7 @@ $("#button-1a").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
+  $("#card4").hide();
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle1").show();
@@ -103,6 +104,7 @@ $("#button-1b").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
+  $("#card4").hide();
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle1").show();
@@ -113,6 +115,7 @@ $("#button-1c").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
+  $("#card4").hide();
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle1").show();
@@ -124,6 +127,7 @@ $("#button-2").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
+  $("#card4").hide();
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle2").show();
@@ -135,6 +139,7 @@ $("#button-3a").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
+  $("#card4").hide();
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle3").show();
@@ -145,6 +150,7 @@ $("#button-3b").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
+  $("#card4").hide();
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle3").show();
@@ -155,6 +161,7 @@ $("#button-3c").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
+  $("#card4").hide();
   $("#custom-calories-search").hide();
   $("p").hide();
   $("#hidtitle3").show();
@@ -167,14 +174,37 @@ $("#submit-calorie").on('click', function() {
   $("#card1").hide();
   $("#card2").hide();
   $("#card3").hide();
+  $("#card4").hide();
   $("#custom-calories-search").hide();
   $("p").hide();
-  $("#hidtitle3").show();
   $("#refresh-button").show();
+  $("#hidtitle3").show();
 });
 
+// favorites - hearts
 $(".fa-heart").on('click', function() {
-      $(this).css('color', 'red');
+  $(this).css('color', 'red');
+    if (window.sidebar && window.sidebar.addPanel) {
+        // Mozilla Firefox Bookmark
+        window.sidebar.addPanel(document.title,window.location.href,'');
+    }
+    else if(window.sidebar && jQuery.browser.mozilla){
+        //for other version of FF add rel="sidebar" to link like this:
+        //<a id="bookmarkme" href="#" rel="sidebar" title="bookmark this page">Bookmark This Page</a>
+        jQuery(this).attr('rel', 'sidebar');
+    }
+    else if(window.external && ('AddFavorite' in window.external)) {
+        // IE Favorite
+        window.external.AddFavorite(location.href,document.title);
+    } else if(window.opera && window.print) {
+        // Opera Hotlist
+        this.title=document.title;
+        return true;
+    } else {
+        // webkit - safari/chrome
+        swal('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this recipe.');
+
+    }
 });
 
 // minimize function for ingredient containers
@@ -316,9 +346,13 @@ $("#submit-calorie").on("click", function(event) {
 //////////////////////////////////////////////////////////////////////////////////
 
 /// When the Random Drink button is selected it will populate a random drink for you!
-$("#drink-button").on("click", function(event){
-  event.preventDefault();
 
+$( "#drink-button1" ).one( "click", function() {
+  swal("You must be 21 years or over to drink.");
+});
+
+$("#drink-button1").on("click", function(event){
+  event.preventDefault();
 $("#drink-title-container").show();
 $("#drink-ingredients-container").show();
 $("#drink-description-container").show();
@@ -547,6 +581,7 @@ function postRecipeFunction1() {
      
       //This click listener will listen for when the users request the Recipe Information
       $("#button-instructions1").on("click", function(){
+
         if (recipeShown === false) {
           console.log("You've requested instructions for recipe 1")
         $("#recipe-instructions-title").text(" " + recipeOneName);
@@ -875,7 +910,7 @@ function postRecipeFunction3() {
           $("#recipe-container-guide").html(instructionsMasterDiv3);
              recipeShown = true;
 
-      }else {
+      } else {
         $("#recipe-instructions").hide();
            recipeShown = false;
       }
